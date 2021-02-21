@@ -17,6 +17,7 @@ num_trials = 10000000
 
 # ╔═╡ 4f5b7dc6-7383-11eb-336d-693c68d70892
 begin
+	old_results = Dict()
 	results = Dict()
 	for p in 0:0.1:1
 		Random.seed!(2)
@@ -46,7 +47,7 @@ begin
 				num_profit += 1
 			end
 		end
-
+		old_results[p] = num_profit / num_trials
 		results[p] = num_profit / num_survive
 	end
 end
@@ -55,7 +56,10 @@ end
 results
 
 # ╔═╡ 446f7dc4-73a4-11eb-0204-9bc9d700f48a
-plot(results, legend=true, xlabel="p", ylabel="P(having >= Rs. 10 | no bankruptcy)", label="empirical")
+begin
+	plot(results, legend=true, xlabel="p", ylabel="empirical probability", label="P(having >= Rs. 10 | no bankruptcy)")
+	plot!(old_results, label="P(having >= Rs. 10)")
+end
 
 # ╔═╡ Cell order:
 # ╠═ae94a9ea-7381-11eb-06d8-03520cc84ce7

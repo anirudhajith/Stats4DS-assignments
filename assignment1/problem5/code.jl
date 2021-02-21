@@ -19,7 +19,7 @@ begin
 	T = randstring(['A':'Z'; 'a':'z'; '0':'9'; '~'; '!'; '@'; '#'; '$'; '%'; '^'; '&'; '*'; '('; ')'; '_'; '+'; '='; '-'; '`'; ],8) 			# true password
 	
 	num_trials = 1000000
-	num_successes = 0
+	num_successes = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 	
 	for _ in 1:num_trials
 		match_count = 0
@@ -32,13 +32,15 @@ begin
 			end
 		end
 		
-		if (match_count >= 3)
-			num_successes += 1
+		for k in 0:8
+			if (match_count >= k)
+				num_successes[k+1] += 1
+			end
 		end
 		
 	end
 	
-	num_successes
+	num_successes ./ num_trials
 	
 end
 
