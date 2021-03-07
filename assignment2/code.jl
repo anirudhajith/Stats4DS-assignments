@@ -144,11 +144,9 @@ begin
 		insertcols!(df, 8, "id" => id)
 		df10 = vcat(df10, df)
 	end
-	df10
+	df11 = select(df10, "id", "artist", "track", "time")
+	unique!(df11)
 end
-
-# ╔═╡ 9bf82fba-7e8e-11eb-192c-f100b6b61b86
-df11 = select(df10, "id", "artist", "track", "time")
 
 # ╔═╡ baa5078a-7e8e-11eb-20ee-27981e701127
 df12 = select(df10, "id", "date", "rank")
@@ -241,7 +239,6 @@ plot(df16[:,"dateymd"],df16[:,"movingavgdailyrecovered"], xlabel="date", ylabel=
 # ╟─0130d444-7e6d-11eb-2d4e-cfd52b4d013d
 # ╠═376e137c-7e70-11eb-027e-8f154d44c15b
 # ╠═0a8c3068-7e72-11eb-342d-61829f2c3ff3
-# ╠═9bf82fba-7e8e-11eb-192c-f100b6b61b86
 # ╠═baa5078a-7e8e-11eb-20ee-27981e701127
 # ╟─a276e03a-7e92-11eb-3cac-e3ded5c61dd6
 # ╠═dfebb4f8-7e93-11eb-1c98-51b4d82be4ca
