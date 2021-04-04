@@ -64,6 +64,9 @@ begin
 	df3 = sort(select(df2, "religion", "variable" => "income", "value" => "freq"), ["religion"])
 end
 
+# ╔═╡ 1551ca8e-8d2a-11eb-144e-0fb0455de8a2
+df666 = DataFrames.stack(df1, :)
+
 # ╔═╡ ad49e122-7e64-11eb-327c-ed59d19360b0
 md"""
 #### Problem 2
@@ -231,8 +234,9 @@ plot(df16[:,"dateymd"],df16[:,"movingavgdailyrecovered"], xlabel="date", ylabel=
 # ╟─3fa395a8-7e46-11eb-00d8-9130e5665a36
 # ╠═4d82bef8-7048-11eb-0e64-151cd8c80566
 # ╟─838cfe16-7e47-11eb-3bfd-99ea084384f4
-# ╠═8a5a42ee-7e47-11eb-3888-dd605db3d5c9
+# ╟─8a5a42ee-7e47-11eb-3888-dd605db3d5c9
 # ╠═0b5892d4-7e4c-11eb-2638-4bc905b29372
+# ╠═1551ca8e-8d2a-11eb-144e-0fb0455de8a2
 # ╟─ad49e122-7e64-11eb-327c-ed59d19360b0
 # ╠═b59a52e2-7e64-11eb-2244-4f6397cb9e81
 # ╠═ba0eb8f0-7e68-11eb-2229-5d4fc16d5c95
